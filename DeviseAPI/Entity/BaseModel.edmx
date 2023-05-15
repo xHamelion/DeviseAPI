@@ -1,0 +1,2881 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DeviseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Hablon">
+          <Key>
+            <PropertyRef Name="ID_PodTip" />
+          </Key>
+          <Property Name="ID_PodTip" Type="int" Nullable="false" />
+          <Property Name="Hablon" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.J_Postupl" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="J_Postupl">
+          <Key>
+            <PropertyRef Name="ID_Postavhick" />
+            <PropertyRef Name="ID_Nakladna" />
+            <PropertyRef Name="Data_Postavki" />
+            <PropertyRef Name="Nomer" />
+          </Key>
+          <Property Name="ID_Postavhick" Type="int" Nullable="false" />
+          <Property Name="ID_Nakladna" Type="int" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="int" />
+          <Property Name="Data_Postavki" Type="date" Nullable="false" />
+          <Property Name="Nomer" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.J_Vibit" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="J_Vibit">
+          <Key>
+            <PropertyRef Name="ID_Pokup" />
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Sotrudnic" />
+            <PropertyRef Name="Data_Vibitia" />
+            <PropertyRef Name="Nomer" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Dostavka" />
+            <PropertyRef Name="Summa_Obh" />
+          </Key>
+          <Property Name="ID_Pokup" Type="int" Nullable="false" />
+          <Property Name="ID_Naklad_Prodag" Type="int" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="int" Nullable="false" />
+          <Property Name="Data_Vibitia" Type="date" Nullable="false" />
+          <Property Name="Nomer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+          <Property Name="Dostavka" Type="money" Nullable="false" />
+          <Property Name="Summa_Obh" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Naklad_Prodag">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Prodag" />
+          </Key>
+          <Property Name="ID_Naklad_Prodag" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Pokup" Type="int" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="int" Nullable="false" />
+          <Property Name="Data_Pokup" Type="date" Nullable="false" />
+          <Property Name="Nomer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+          <Property Name="Dostavka" Type="money" Nullable="false" />
+          <Property Name="Summa_Obh" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nakladna">
+          <Key>
+            <PropertyRef Name="ID_Nakladna" />
+          </Key>
+          <Property Name="ID_Nakladna" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Postavhick" Type="int" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="int" Nullable="false" />
+          <Property Name="Data_Postavki" Type="date" Nullable="false" />
+          <Property Name="Nomer" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PodTip">
+          <Key>
+            <PropertyRef Name="ID_PodTip" />
+          </Key>
+          <Property Name="ID_PodTip" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PodTip" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ID_Tip" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pokup">
+          <Key>
+            <PropertyRef Name="ID_Pokup" />
+          </Key>
+          <Property Name="ID_Pokup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Imia" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Otzhestvo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Postavhick">
+          <Key>
+            <PropertyRef Name="ID_Postavhick" />
+          </Key>
+          <Property Name="ID_Postavhick" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naimenovanie_Organiz" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reg">
+          <Key>
+            <PropertyRef Name="ID_Reg" />
+          </Key>
+          <Property Name="ID_Reg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Porol" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Dostup" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sklad">
+          <Key>
+            <PropertyRef Name="ID_Sklad" />
+          </Key>
+          <Property Name="ID_Sklad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="Koll" Type="int" Nullable="false" />
+          <Property Name="Sredn_Zena" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.Sost_Naklad_Prodag" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Sost_Naklad_Prodag">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+          </Key>
+          <Property Name="ID_Naklad_Prodag" Type="int" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="Koll" Type="int" Nullable="false" />
+          <Property Name="Zena" Type="money" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.Sost_Nakladna" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Sost_Nakladna">
+          <Key>
+            <PropertyRef Name="ID_Nakladna" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+          </Key>
+          <Property Name="ID_Nakladna" Type="int" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="Koll" Type="int" Nullable="false" />
+          <Property Name="Zena" Type="money" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.Sostav_Partii" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Sostav_Partii">
+          <Key>
+            <PropertyRef Name="ID_Naklada" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+          </Key>
+          <Property Name="ID_Naklada" Type="int" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="Koll" Type="int" Nullable="false" />
+          <Property Name="Zena" Type="money" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.Sostav_Postupl_Naklad" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Sostav_Postupl_Naklad">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Postupl" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+          </Key>
+          <Property Name="ID_Naklad_Postupl" Type="int" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="Koll" Type="int" Nullable="false" />
+          <Property Name="Zena" Type="money" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.Sostav_Vibitie_Naklad" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Sostav_Vibitie_Naklad">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+          </Key>
+          <Property Name="ID_Naklad_Prodag" Type="int" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="Koll" Type="int" Nullable="false" />
+          <Property Name="Zena" Type="money" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sotrudnic">
+          <Key>
+            <PropertyRef Name="ID_Sotrudnic" />
+          </Key>
+          <Property Name="ID_Sotrudnic" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Imia" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Otzh" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tip">
+          <Key>
+            <PropertyRef Name="ID_Tip" />
+          </Key>
+          <Property Name="ID_Tip" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tovar">
+          <Key>
+            <PropertyRef Name="ID_Tovar" />
+          </Key>
+          <Property Name="ID_Tovar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tovar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ID_PodTip" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "Devise.dbo.Поставшики$" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Поставшики$">
+          <Property Name="F1" Type="float" />
+          <Property Name="F2" Type="nvarchar" MaxLength="255" />
+          <Property Name="F3" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_J_Postupl" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_J_Postupl">
+          <Key>
+            <PropertyRef Name="ID_Postavhick" />
+            <PropertyRef Name="ID_Nakladna" />
+            <PropertyRef Name="Naimenovanie_Organiz" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="FIO" />
+            <PropertyRef Name="Data_Postavki" />
+            <PropertyRef Name="Nomer" />
+          </Key>
+          <Property Name="ID_Postavhick" Type="int" Nullable="false" />
+          <Property Name="ID_Nakladna" Type="int" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="int" />
+          <Property Name="Naimenovanie_Organiz" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="77" Nullable="false" />
+          <Property Name="Data_Postavki" Type="date" Nullable="false" />
+          <Property Name="Nomer" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_J_Vibit" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_J_Vibit">
+          <Key>
+            <PropertyRef Name="ID_Pokup" />
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Sotrudnic" />
+            <PropertyRef Name="FIO_Pokup" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="FIO_Sotrudnic" />
+            <PropertyRef Name="Data_Vibitia" />
+            <PropertyRef Name="Nomer" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Dostavka" />
+            <PropertyRef Name="Summa_Obh" />
+          </Key>
+          <Property Name="ID_Pokup" Type="int" Nullable="false" />
+          <Property Name="ID_Naklad_Prodag" Type="int" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="int" Nullable="false" />
+          <Property Name="FIO_Pokup" Type="nvarchar" MaxLength="62" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="FIO_Sotrudnic" Type="nvarchar" MaxLength="77" Nullable="false" />
+          <Property Name="Data_Vibitia" Type="date" Nullable="false" />
+          <Property Name="Nomer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+          <Property Name="Dostavka" Type="money" Nullable="false" />
+          <Property Name="Summa_Obh" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_Naklad_Prodag" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_Naklad_Prodag">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Pokup" />
+            <PropertyRef Name="ID_Sotrudnic" />
+            <PropertyRef Name="FIO_Pokup" />
+            <PropertyRef Name="FIO_Sotrudnic" />
+            <PropertyRef Name="Data_Pokup" />
+            <PropertyRef Name="Nomer" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Dostavka" />
+            <PropertyRef Name="Summa_Obh" />
+          </Key>
+          <Property Name="ID_Naklad_Prodag" Type="int" Nullable="false" />
+          <Property Name="ID_Pokup" Type="int" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="int" Nullable="false" />
+          <Property Name="FIO_Pokup" Type="nvarchar" MaxLength="62" Nullable="false" />
+          <Property Name="FIO_Sotrudnic" Type="nvarchar" MaxLength="77" Nullable="false" />
+          <Property Name="Data_Pokup" Type="date" Nullable="false" />
+          <Property Name="Nomer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+          <Property Name="Dostavka" Type="money" Nullable="false" />
+          <Property Name="Summa_Obh" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_Nakladna" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_Nakladna">
+          <Key>
+            <PropertyRef Name="ID_Nakladna" />
+            <PropertyRef Name="ID_Postavhick" />
+            <PropertyRef Name="ID_Sotrudnic" />
+            <PropertyRef Name="Naimenovanie_Organiz" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="FIO_Sotrudnic" />
+            <PropertyRef Name="Data_Postavki" />
+            <PropertyRef Name="Nomer" />
+          </Key>
+          <Property Name="ID_Nakladna" Type="int" Nullable="false" />
+          <Property Name="ID_Postavhick" Type="int" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="int" Nullable="false" />
+          <Property Name="Naimenovanie_Organiz" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="FIO_Sotrudnic" Type="nvarchar" MaxLength="77" Nullable="false" />
+          <Property Name="Data_Postavki" Type="date" Nullable="false" />
+          <Property Name="Nomer" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_PodTip" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_PodTip">
+          <Key>
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+          </Key>
+          <Property Name="ID_PodTip" Type="int" Nullable="false" />
+          <Property Name="ID_Tip" Type="int" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PodTip" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_Pokup" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_Pokup">
+          <Key>
+            <PropertyRef Name="ID_Pokup" />
+            <PropertyRef Name="FIO" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="Familia" />
+            <PropertyRef Name="Imia" />
+            <PropertyRef Name="Otzhestvo" />
+          </Key>
+          <Property Name="ID_Pokup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="62" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Imia" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Otzhestvo" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_Sklad" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_Sklad">
+          <Key>
+            <PropertyRef Name="ID_Sklad" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Sredn_Zena" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Sklad" Type="int" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="ID_PodTip" Type="int" Nullable="false" />
+          <Property Name="ID_Tip" Type="int" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PodTip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tovar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Koll" Type="int" Nullable="false" />
+          <Property Name="Sredn_Zena" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_Sost_Naklad_Prodag" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_Sost_Naklad_Prodag">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Naklad_Prodag" Type="int" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="ID_PodTip" Type="int" Nullable="false" />
+          <Property Name="ID_Tip" Type="int" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PodTip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tovar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Koll" Type="int" Nullable="false" />
+          <Property Name="Zena" Type="money" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_Sost_Nakladna" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_Sost_Nakladna">
+          <Key>
+            <PropertyRef Name="ID_Nakladna" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_Postavhick" />
+            <PropertyRef Name="ID_Sotrudnic" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Naimenovanie_Organiz" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="FIO_Sotrudnic" />
+            <PropertyRef Name="Data_Postavki" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Nakladna" Type="int" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="ID_Postavhick" Type="int" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="int" Nullable="false" />
+          <Property Name="ID_PodTip" Type="int" Nullable="false" />
+          <Property Name="ID_Tip" Type="int" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PodTip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tovar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Naimenovanie_Organiz" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="FIO_Sotrudnic" Type="nvarchar" MaxLength="77" Nullable="false" />
+          <Property Name="Data_Postavki" Type="date" Nullable="false" />
+          <Property Name="Koll" Type="int" Nullable="false" />
+          <Property Name="Zena" Type="money" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_Sostav_Partii" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_Sostav_Partii">
+          <Key>
+            <PropertyRef Name="ID_Naklada" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Naklada" Type="int" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="ID_PodTip" Type="int" Nullable="false" />
+          <Property Name="ID_Tip" Type="int" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PodTip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tovar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Koll" Type="int" Nullable="false" />
+          <Property Name="Zena" Type="money" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_Sostav_Postupl_Naklad" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_Sostav_Postupl_Naklad">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Postupl" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Naklad_Postupl" Type="int" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="ID_PodTip" Type="int" Nullable="false" />
+          <Property Name="ID_Tip" Type="int" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PodTip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tovar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Koll" Type="int" Nullable="false" />
+          <Property Name="Zena" Type="money" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_Sostav_Vibitie_Naklad" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_Sostav_Vibitie_Naklad">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Naklad_Prodag" Type="int" Nullable="false" />
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="ID_PodTip" Type="int" Nullable="false" />
+          <Property Name="ID_Tip" Type="int" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PodTip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tovar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Koll" Type="int" Nullable="false" />
+          <Property Name="Zena" Type="money" Nullable="false" />
+          <Property Name="Summa" Type="money" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_Sotrudnic" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_Sotrudnic">
+          <Key>
+            <PropertyRef Name="ID_Sotrudnic" />
+            <PropertyRef Name="FIO" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="Familia" />
+            <PropertyRef Name="Imia" />
+            <PropertyRef Name="Otzh" />
+          </Key>
+          <Property Name="ID_Sotrudnic" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="77" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Imia" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Otzh" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Devise.dbo.View_Tovar" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_Tovar">
+          <Key>
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Tovar" Type="int" Nullable="false" />
+          <Property Name="ID_PodTip" Type="int" Nullable="false" />
+          <Property Name="ID_Tip" Type="int" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PodTip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tovar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Hablon_PodTip">
+          <End Role="PodTip" Type="Self.PodTip" Multiplicity="1" />
+          <End Role="Hablon" Type="Self.Hablon" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PodTip">
+              <PropertyRef Name="ID_PodTip" />
+            </Principal>
+            <Dependent Role="Hablon">
+              <PropertyRef Name="ID_PodTip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_J_Postupl_Postavhick">
+          <End Role="Postavhick" Type="Self.Postavhick" Multiplicity="1" />
+          <End Role="J_Postupl" Type="Self.J_Postupl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavhick">
+              <PropertyRef Name="ID_Postavhick" />
+            </Principal>
+            <Dependent Role="J_Postupl">
+              <PropertyRef Name="ID_Postavhick" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_J_Postupl_Sotrudnic">
+          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="0..1" />
+          <End Role="J_Postupl" Type="Self.J_Postupl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnic">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Principal>
+            <Dependent Role="J_Postupl">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_J_Vibit_Pokup">
+          <End Role="Pokup" Type="Self.Pokup" Multiplicity="1" />
+          <End Role="J_Vibit" Type="Self.J_Vibit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokup">
+              <PropertyRef Name="ID_Pokup" />
+            </Principal>
+            <Dependent Role="J_Vibit">
+              <PropertyRef Name="ID_Pokup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_J_Vibit_Sotrudnic">
+          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="1" />
+          <End Role="J_Vibit" Type="Self.J_Vibit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnic">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Principal>
+            <Dependent Role="J_Vibit">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naklad_Prodag_Pokup">
+          <End Role="Pokup" Type="Self.Pokup" Multiplicity="1" />
+          <End Role="Naklad_Prodag" Type="Self.Naklad_Prodag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokup">
+              <PropertyRef Name="ID_Pokup" />
+            </Principal>
+            <Dependent Role="Naklad_Prodag">
+              <PropertyRef Name="ID_Pokup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naklad_Prodag_Sotrudnic">
+          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="1" />
+          <End Role="Naklad_Prodag" Type="Self.Naklad_Prodag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnic">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Principal>
+            <Dependent Role="Naklad_Prodag">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nakladna_Postavhick">
+          <End Role="Postavhick" Type="Self.Postavhick" Multiplicity="1" />
+          <End Role="Nakladna" Type="Self.Nakladna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavhick">
+              <PropertyRef Name="ID_Postavhick" />
+            </Principal>
+            <Dependent Role="Nakladna">
+              <PropertyRef Name="ID_Postavhick" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nakladna_Sotrudnic">
+          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="1" />
+          <End Role="Nakladna" Type="Self.Nakladna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnic">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Principal>
+            <Dependent Role="Nakladna">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PodTip_Tip">
+          <End Role="Tip" Type="Self.Tip" Multiplicity="1" />
+          <End Role="PodTip" Type="Self.PodTip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip">
+              <PropertyRef Name="ID_Tip" />
+            </Principal>
+            <Dependent Role="PodTip">
+              <PropertyRef Name="ID_Tip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sklad_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Sklad">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sost_Naklad_Prodag_Naklad_Prodag">
+          <End Role="Naklad_Prodag" Type="Self.Naklad_Prodag" Multiplicity="1" />
+          <End Role="Sost_Naklad_Prodag" Type="Self.Sost_Naklad_Prodag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naklad_Prodag">
+              <PropertyRef Name="ID_Naklad_Prodag" />
+            </Principal>
+            <Dependent Role="Sost_Naklad_Prodag">
+              <PropertyRef Name="ID_Naklad_Prodag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sost_Naklad_Prodag_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Sost_Naklad_Prodag" Type="Self.Sost_Naklad_Prodag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Sost_Naklad_Prodag">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sost_Nakladna_Nakladna">
+          <End Role="Nakladna" Type="Self.Nakladna" Multiplicity="1" />
+          <End Role="Sost_Nakladna" Type="Self.Sost_Nakladna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nakladna">
+              <PropertyRef Name="ID_Nakladna" />
+            </Principal>
+            <Dependent Role="Sost_Nakladna">
+              <PropertyRef Name="ID_Nakladna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sost_Nakladna_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Sost_Nakladna" Type="Self.Sost_Nakladna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Sost_Nakladna">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sostav_Partii_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Sostav_Partii" Type="Self.Sostav_Partii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Sostav_Partii">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sostav_Postupl_Naklad_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Sostav_Postupl_Naklad" Type="Self.Sostav_Postupl_Naklad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Sostav_Postupl_Naklad">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sostav_Vibitie_Naklad_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Sostav_Vibitie_Naklad" Type="Self.Sostav_Vibitie_Naklad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Sostav_Vibitie_Naklad">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_PodTip">
+          <End Role="PodTip" Type="Self.PodTip" Multiplicity="1" />
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PodTip">
+              <PropertyRef Name="ID_PodTip" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="ID_PodTip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="Hranim_PodTip" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Hranim_Sost_J_Vibit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Hranim_Sost_Naklad_Prodag" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Hranim_Sostav_Patii_Sklad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Hranim_View_Sost_Nakladna" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="View_Sostav_Postupl_Nakla" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище DeviseModelContainer">
+          <EntitySet Name="Hablon" EntityType="Self.Hablon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Naklad_Prodag" EntityType="Self.Naklad_Prodag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nakladna" EntityType="Self.Nakladna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PodTip" EntityType="Self.PodTip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pokup" EntityType="Self.Pokup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postavhick" EntityType="Self.Postavhick" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reg" EntityType="Self.Reg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sklad" EntityType="Self.Sklad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrudnic" EntityType="Self.Sotrudnic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip" EntityType="Self.Tip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tovar" EntityType="Self.Tovar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="J_Postupl" EntityType="Self.J_Postupl" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [J_Postupl].[ID_Postavhick] AS [ID_Postavhick], 
+    [J_Postupl].[ID_Nakladna] AS [ID_Nakladna], 
+    [J_Postupl].[ID_Sotrudnic] AS [ID_Sotrudnic], 
+    [J_Postupl].[Data_Postavki] AS [Data_Postavki], 
+    [J_Postupl].[Nomer] AS [Nomer]
+    FROM [dbo].[J_Postupl] AS [J_Postupl]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="J_Vibit" EntityType="Self.J_Vibit" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [J_Vibit].[ID_Pokup] AS [ID_Pokup], 
+    [J_Vibit].[ID_Naklad_Prodag] AS [ID_Naklad_Prodag], 
+    [J_Vibit].[ID_Sotrudnic] AS [ID_Sotrudnic], 
+    [J_Vibit].[Data_Vibitia] AS [Data_Vibitia], 
+    [J_Vibit].[Nomer] AS [Nomer], 
+    [J_Vibit].[Summa] AS [Summa], 
+    [J_Vibit].[Dostavka] AS [Dostavka], 
+    [J_Vibit].[Summa_Obh] AS [Summa_Obh]
+    FROM [dbo].[J_Vibit] AS [J_Vibit]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sost_Naklad_Prodag" EntityType="Self.Sost_Naklad_Prodag" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sost_Naklad_Prodag].[ID_Naklad_Prodag] AS [ID_Naklad_Prodag], 
+    [Sost_Naklad_Prodag].[ID_Tovar] AS [ID_Tovar], 
+    [Sost_Naklad_Prodag].[Koll] AS [Koll], 
+    [Sost_Naklad_Prodag].[Zena] AS [Zena], 
+    [Sost_Naklad_Prodag].[Summa] AS [Summa]
+    FROM [dbo].[Sost_Naklad_Prodag] AS [Sost_Naklad_Prodag]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sost_Nakladna" EntityType="Self.Sost_Nakladna" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sost_Nakladna].[ID_Nakladna] AS [ID_Nakladna], 
+    [Sost_Nakladna].[ID_Tovar] AS [ID_Tovar], 
+    [Sost_Nakladna].[Koll] AS [Koll], 
+    [Sost_Nakladna].[Zena] AS [Zena], 
+    [Sost_Nakladna].[Summa] AS [Summa]
+    FROM [dbo].[Sost_Nakladna] AS [Sost_Nakladna]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sostav_Partii" EntityType="Self.Sostav_Partii" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sostav_Partii].[ID_Naklada] AS [ID_Naklada], 
+    [Sostav_Partii].[ID_Tovar] AS [ID_Tovar], 
+    [Sostav_Partii].[Koll] AS [Koll], 
+    [Sostav_Partii].[Zena] AS [Zena], 
+    [Sostav_Partii].[Summa] AS [Summa]
+    FROM [dbo].[Sostav_Partii] AS [Sostav_Partii]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sostav_Postupl_Naklad" EntityType="Self.Sostav_Postupl_Naklad" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sostav_Postupl_Naklad].[ID_Naklad_Postupl] AS [ID_Naklad_Postupl], 
+    [Sostav_Postupl_Naklad].[ID_Tovar] AS [ID_Tovar], 
+    [Sostav_Postupl_Naklad].[Koll] AS [Koll], 
+    [Sostav_Postupl_Naklad].[Zena] AS [Zena], 
+    [Sostav_Postupl_Naklad].[Summa] AS [Summa]
+    FROM [dbo].[Sostav_Postupl_Naklad] AS [Sostav_Postupl_Naklad]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sostav_Vibitie_Naklad" EntityType="Self.Sostav_Vibitie_Naklad" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sostav_Vibitie_Naklad].[ID_Naklad_Prodag] AS [ID_Naklad_Prodag], 
+    [Sostav_Vibitie_Naklad].[ID_Tovar] AS [ID_Tovar], 
+    [Sostav_Vibitie_Naklad].[Koll] AS [Koll], 
+    [Sostav_Vibitie_Naklad].[Zena] AS [Zena], 
+    [Sostav_Vibitie_Naklad].[Summa] AS [Summa]
+    FROM [dbo].[Sostav_Vibitie_Naklad] AS [Sostav_Vibitie_Naklad]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_J_Postupl" EntityType="Self.View_J_Postupl" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_J_Postupl].[ID_Postavhick] AS [ID_Postavhick], 
+    [View_J_Postupl].[ID_Nakladna] AS [ID_Nakladna], 
+    [View_J_Postupl].[ID_Sotrudnic] AS [ID_Sotrudnic], 
+    [View_J_Postupl].[Naimenovanie_Organiz] AS [Naimenovanie_Organiz], 
+    [View_J_Postupl].[Telefon] AS [Telefon], 
+    [View_J_Postupl].[FIO] AS [FIO], 
+    [View_J_Postupl].[Data_Postavki] AS [Data_Postavki], 
+    [View_J_Postupl].[Nomer] AS [Nomer]
+    FROM [dbo].[View_J_Postupl] AS [View_J_Postupl]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_J_Vibit" EntityType="Self.View_J_Vibit" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_J_Vibit].[ID_Pokup] AS [ID_Pokup], 
+    [View_J_Vibit].[ID_Naklad_Prodag] AS [ID_Naklad_Prodag], 
+    [View_J_Vibit].[ID_Sotrudnic] AS [ID_Sotrudnic], 
+    [View_J_Vibit].[FIO_Pokup] AS [FIO_Pokup], 
+    [View_J_Vibit].[Telefon] AS [Telefon], 
+    [View_J_Vibit].[FIO_Sotrudnic] AS [FIO_Sotrudnic], 
+    [View_J_Vibit].[Data_Vibitia] AS [Data_Vibitia], 
+    [View_J_Vibit].[Nomer] AS [Nomer], 
+    [View_J_Vibit].[Summa] AS [Summa], 
+    [View_J_Vibit].[Dostavka] AS [Dostavka], 
+    [View_J_Vibit].[Summa_Obh] AS [Summa_Obh]
+    FROM [dbo].[View_J_Vibit] AS [View_J_Vibit]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Naklad_Prodag" EntityType="Self.View_Naklad_Prodag" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Naklad_Prodag].[ID_Naklad_Prodag] AS [ID_Naklad_Prodag], 
+    [View_Naklad_Prodag].[ID_Pokup] AS [ID_Pokup], 
+    [View_Naklad_Prodag].[ID_Sotrudnic] AS [ID_Sotrudnic], 
+    [View_Naklad_Prodag].[FIO_Pokup] AS [FIO_Pokup], 
+    [View_Naklad_Prodag].[FIO_Sotrudnic] AS [FIO_Sotrudnic], 
+    [View_Naklad_Prodag].[Data_Pokup] AS [Data_Pokup], 
+    [View_Naklad_Prodag].[Nomer] AS [Nomer], 
+    [View_Naklad_Prodag].[Summa] AS [Summa], 
+    [View_Naklad_Prodag].[Dostavka] AS [Dostavka], 
+    [View_Naklad_Prodag].[Summa_Obh] AS [Summa_Obh]
+    FROM [dbo].[View_Naklad_Prodag] AS [View_Naklad_Prodag]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Nakladna" EntityType="Self.View_Nakladna" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Nakladna].[ID_Nakladna] AS [ID_Nakladna], 
+    [View_Nakladna].[ID_Postavhick] AS [ID_Postavhick], 
+    [View_Nakladna].[ID_Sotrudnic] AS [ID_Sotrudnic], 
+    [View_Nakladna].[Naimenovanie_Organiz] AS [Naimenovanie_Organiz], 
+    [View_Nakladna].[Telefon] AS [Telefon], 
+    [View_Nakladna].[FIO_Sotrudnic] AS [FIO_Sotrudnic], 
+    [View_Nakladna].[Data_Postavki] AS [Data_Postavki], 
+    [View_Nakladna].[Nomer] AS [Nomer]
+    FROM [dbo].[View_Nakladna] AS [View_Nakladna]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_PodTip" EntityType="Self.View_PodTip" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_PodTip].[ID_PodTip] AS [ID_PodTip], 
+    [View_PodTip].[ID_Tip] AS [ID_Tip], 
+    [View_PodTip].[Tip] AS [Tip], 
+    [View_PodTip].[PodTip] AS [PodTip]
+    FROM [dbo].[View_PodTip] AS [View_PodTip]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Pokup" EntityType="Self.View_Pokup" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Pokup].[ID_Pokup] AS [ID_Pokup], 
+    [View_Pokup].[FIO] AS [FIO], 
+    [View_Pokup].[Telefon] AS [Telefon], 
+    [View_Pokup].[Familia] AS [Familia], 
+    [View_Pokup].[Imia] AS [Imia], 
+    [View_Pokup].[Otzhestvo] AS [Otzhestvo]
+    FROM [dbo].[View_Pokup] AS [View_Pokup]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Sklad" EntityType="Self.View_Sklad" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Sklad].[ID_Sklad] AS [ID_Sklad], 
+    [View_Sklad].[ID_Tovar] AS [ID_Tovar], 
+    [View_Sklad].[ID_PodTip] AS [ID_PodTip], 
+    [View_Sklad].[ID_Tip] AS [ID_Tip], 
+    [View_Sklad].[Tip] AS [Tip], 
+    [View_Sklad].[PodTip] AS [PodTip], 
+    [View_Sklad].[Tovar] AS [Tovar], 
+    [View_Sklad].[Opisanie] AS [Opisanie], 
+    [View_Sklad].[Koll] AS [Koll], 
+    [View_Sklad].[Sredn_Zena] AS [Sredn_Zena], 
+    [View_Sklad].[Image] AS [Image]
+    FROM [dbo].[View_Sklad] AS [View_Sklad]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Sost_Naklad_Prodag" EntityType="Self.View_Sost_Naklad_Prodag" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Sost_Naklad_Prodag].[ID_Naklad_Prodag] AS [ID_Naklad_Prodag], 
+    [View_Sost_Naklad_Prodag].[ID_Tovar] AS [ID_Tovar], 
+    [View_Sost_Naklad_Prodag].[ID_PodTip] AS [ID_PodTip], 
+    [View_Sost_Naklad_Prodag].[ID_Tip] AS [ID_Tip], 
+    [View_Sost_Naklad_Prodag].[Tip] AS [Tip], 
+    [View_Sost_Naklad_Prodag].[PodTip] AS [PodTip], 
+    [View_Sost_Naklad_Prodag].[Tovar] AS [Tovar], 
+    [View_Sost_Naklad_Prodag].[Opisanie] AS [Opisanie], 
+    [View_Sost_Naklad_Prodag].[Koll] AS [Koll], 
+    [View_Sost_Naklad_Prodag].[Zena] AS [Zena], 
+    [View_Sost_Naklad_Prodag].[Summa] AS [Summa], 
+    [View_Sost_Naklad_Prodag].[Image] AS [Image]
+    FROM [dbo].[View_Sost_Naklad_Prodag] AS [View_Sost_Naklad_Prodag]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Sost_Nakladna" EntityType="Self.View_Sost_Nakladna" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Sost_Nakladna].[ID_Nakladna] AS [ID_Nakladna], 
+    [View_Sost_Nakladna].[ID_Tovar] AS [ID_Tovar], 
+    [View_Sost_Nakladna].[ID_Postavhick] AS [ID_Postavhick], 
+    [View_Sost_Nakladna].[ID_Sotrudnic] AS [ID_Sotrudnic], 
+    [View_Sost_Nakladna].[ID_PodTip] AS [ID_PodTip], 
+    [View_Sost_Nakladna].[ID_Tip] AS [ID_Tip], 
+    [View_Sost_Nakladna].[Tip] AS [Tip], 
+    [View_Sost_Nakladna].[PodTip] AS [PodTip], 
+    [View_Sost_Nakladna].[Tovar] AS [Tovar], 
+    [View_Sost_Nakladna].[Opisanie] AS [Opisanie], 
+    [View_Sost_Nakladna].[Naimenovanie_Organiz] AS [Naimenovanie_Organiz], 
+    [View_Sost_Nakladna].[Telefon] AS [Telefon], 
+    [View_Sost_Nakladna].[FIO_Sotrudnic] AS [FIO_Sotrudnic], 
+    [View_Sost_Nakladna].[Data_Postavki] AS [Data_Postavki], 
+    [View_Sost_Nakladna].[Koll] AS [Koll], 
+    [View_Sost_Nakladna].[Zena] AS [Zena], 
+    [View_Sost_Nakladna].[Summa] AS [Summa], 
+    [View_Sost_Nakladna].[Image] AS [Image]
+    FROM [dbo].[View_Sost_Nakladna] AS [View_Sost_Nakladna]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Sostav_Partii" EntityType="Self.View_Sostav_Partii" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Sostav_Partii].[ID_Naklada] AS [ID_Naklada], 
+    [View_Sostav_Partii].[ID_Tovar] AS [ID_Tovar], 
+    [View_Sostav_Partii].[ID_PodTip] AS [ID_PodTip], 
+    [View_Sostav_Partii].[ID_Tip] AS [ID_Tip], 
+    [View_Sostav_Partii].[Tip] AS [Tip], 
+    [View_Sostav_Partii].[PodTip] AS [PodTip], 
+    [View_Sostav_Partii].[Tovar] AS [Tovar], 
+    [View_Sostav_Partii].[Opisanie] AS [Opisanie], 
+    [View_Sostav_Partii].[Koll] AS [Koll], 
+    [View_Sostav_Partii].[Zena] AS [Zena], 
+    [View_Sostav_Partii].[Summa] AS [Summa], 
+    [View_Sostav_Partii].[Image] AS [Image]
+    FROM [dbo].[View_Sostav_Partii] AS [View_Sostav_Partii]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Sostav_Postupl_Naklad" EntityType="Self.View_Sostav_Postupl_Naklad" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Sostav_Postupl_Naklad].[ID_Naklad_Postupl] AS [ID_Naklad_Postupl], 
+    [View_Sostav_Postupl_Naklad].[ID_Tovar] AS [ID_Tovar], 
+    [View_Sostav_Postupl_Naklad].[ID_PodTip] AS [ID_PodTip], 
+    [View_Sostav_Postupl_Naklad].[ID_Tip] AS [ID_Tip], 
+    [View_Sostav_Postupl_Naklad].[Tip] AS [Tip], 
+    [View_Sostav_Postupl_Naklad].[PodTip] AS [PodTip], 
+    [View_Sostav_Postupl_Naklad].[Tovar] AS [Tovar], 
+    [View_Sostav_Postupl_Naklad].[Opisanie] AS [Opisanie], 
+    [View_Sostav_Postupl_Naklad].[Koll] AS [Koll], 
+    [View_Sostav_Postupl_Naklad].[Zena] AS [Zena], 
+    [View_Sostav_Postupl_Naklad].[Summa] AS [Summa], 
+    [View_Sostav_Postupl_Naklad].[Image] AS [Image]
+    FROM [dbo].[View_Sostav_Postupl_Naklad] AS [View_Sostav_Postupl_Naklad]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Sostav_Vibitie_Naklad" EntityType="Self.View_Sostav_Vibitie_Naklad" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Sostav_Vibitie_Naklad].[ID_Naklad_Prodag] AS [ID_Naklad_Prodag], 
+    [View_Sostav_Vibitie_Naklad].[ID_Tovar] AS [ID_Tovar], 
+    [View_Sostav_Vibitie_Naklad].[ID_PodTip] AS [ID_PodTip], 
+    [View_Sostav_Vibitie_Naklad].[ID_Tip] AS [ID_Tip], 
+    [View_Sostav_Vibitie_Naklad].[Tip] AS [Tip], 
+    [View_Sostav_Vibitie_Naklad].[PodTip] AS [PodTip], 
+    [View_Sostav_Vibitie_Naklad].[Tovar] AS [Tovar], 
+    [View_Sostav_Vibitie_Naklad].[Opisanie] AS [Opisanie], 
+    [View_Sostav_Vibitie_Naklad].[Koll] AS [Koll], 
+    [View_Sostav_Vibitie_Naklad].[Zena] AS [Zena], 
+    [View_Sostav_Vibitie_Naklad].[Summa] AS [Summa], 
+    [View_Sostav_Vibitie_Naklad].[Image] AS [Image]
+    FROM [dbo].[View_Sostav_Vibitie_Naklad] AS [View_Sostav_Vibitie_Naklad]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Sotrudnic" EntityType="Self.View_Sotrudnic" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Sotrudnic].[ID_Sotrudnic] AS [ID_Sotrudnic], 
+    [View_Sotrudnic].[FIO] AS [FIO], 
+    [View_Sotrudnic].[Telefon] AS [Telefon], 
+    [View_Sotrudnic].[Familia] AS [Familia], 
+    [View_Sotrudnic].[Imia] AS [Imia], 
+    [View_Sotrudnic].[Otzh] AS [Otzh]
+    FROM [dbo].[View_Sotrudnic] AS [View_Sotrudnic]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Tovar" EntityType="Self.View_Tovar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Tovar].[ID_Tovar] AS [ID_Tovar], 
+    [View_Tovar].[ID_PodTip] AS [ID_PodTip], 
+    [View_Tovar].[ID_Tip] AS [ID_Tip], 
+    [View_Tovar].[Tip] AS [Tip], 
+    [View_Tovar].[PodTip] AS [PodTip], 
+    [View_Tovar].[Tovar] AS [Tovar], 
+    [View_Tovar].[Opisanie] AS [Opisanie], 
+    [View_Tovar].[Image] AS [Image]
+    FROM [dbo].[View_Tovar] AS [View_Tovar]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Hablon_PodTip" Association="Self.FK_Hablon_PodTip">
+            <End Role="PodTip" EntitySet="PodTip" />
+            <End Role="Hablon" EntitySet="Hablon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_J_Postupl_Postavhick" Association="Self.FK_J_Postupl_Postavhick">
+            <End Role="Postavhick" EntitySet="Postavhick" />
+            <End Role="J_Postupl" EntitySet="J_Postupl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_J_Postupl_Sotrudnic" Association="Self.FK_J_Postupl_Sotrudnic">
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+            <End Role="J_Postupl" EntitySet="J_Postupl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_J_Vibit_Pokup" Association="Self.FK_J_Vibit_Pokup">
+            <End Role="Pokup" EntitySet="Pokup" />
+            <End Role="J_Vibit" EntitySet="J_Vibit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_J_Vibit_Sotrudnic" Association="Self.FK_J_Vibit_Sotrudnic">
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+            <End Role="J_Vibit" EntitySet="J_Vibit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naklad_Prodag_Pokup" Association="Self.FK_Naklad_Prodag_Pokup">
+            <End Role="Pokup" EntitySet="Pokup" />
+            <End Role="Naklad_Prodag" EntitySet="Naklad_Prodag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naklad_Prodag_Sotrudnic" Association="Self.FK_Naklad_Prodag_Sotrudnic">
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+            <End Role="Naklad_Prodag" EntitySet="Naklad_Prodag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nakladna_Postavhick" Association="Self.FK_Nakladna_Postavhick">
+            <End Role="Postavhick" EntitySet="Postavhick" />
+            <End Role="Nakladna" EntitySet="Nakladna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nakladna_Sotrudnic" Association="Self.FK_Nakladna_Sotrudnic">
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+            <End Role="Nakladna" EntitySet="Nakladna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PodTip_Tip" Association="Self.FK_PodTip_Tip">
+            <End Role="Tip" EntitySet="Tip" />
+            <End Role="PodTip" EntitySet="PodTip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sklad_Tovar" Association="Self.FK_Sklad_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sklad" EntitySet="Sklad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sost_Naklad_Prodag_Naklad_Prodag" Association="Self.FK_Sost_Naklad_Prodag_Naklad_Prodag">
+            <End Role="Naklad_Prodag" EntitySet="Naklad_Prodag" />
+            <End Role="Sost_Naklad_Prodag" EntitySet="Sost_Naklad_Prodag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sost_Naklad_Prodag_Tovar" Association="Self.FK_Sost_Naklad_Prodag_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sost_Naklad_Prodag" EntitySet="Sost_Naklad_Prodag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sost_Nakladna_Nakladna" Association="Self.FK_Sost_Nakladna_Nakladna">
+            <End Role="Nakladna" EntitySet="Nakladna" />
+            <End Role="Sost_Nakladna" EntitySet="Sost_Nakladna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sost_Nakladna_Tovar" Association="Self.FK_Sost_Nakladna_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sost_Nakladna" EntitySet="Sost_Nakladna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sostav_Partii_Tovar" Association="Self.FK_Sostav_Partii_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sostav_Partii" EntitySet="Sostav_Partii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sostav_Postupl_Naklad_Tovar" Association="Self.FK_Sostav_Postupl_Naklad_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sostav_Postupl_Naklad" EntitySet="Sostav_Postupl_Naklad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sostav_Vibitie_Naklad_Tovar" Association="Self.FK_Sostav_Vibitie_Naklad_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sostav_Vibitie_Naklad" EntitySet="Sostav_Vibitie_Naklad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_PodTip" Association="Self.FK_Tovar_PodTip">
+            <End Role="PodTip" EntitySet="PodTip" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DeviseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Hablon">
+          <Key>
+            <PropertyRef Name="ID_PodTip" />
+          </Key>
+          <Property Name="ID_PodTip" Type="Int32" Nullable="false" />
+          <Property Name="Hablon1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PodTip" Relationship="Self.FK_Hablon_PodTip" FromRole="Hablon" ToRole="PodTip" />
+        </EntityType>
+        <EntityType Name="Naklad_Prodag">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Prodag" />
+          </Key>
+          <Property Name="ID_Naklad_Prodag" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Pokup" Type="Int32" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="Int32" Nullable="false" />
+          <Property Name="Data_Pokup" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Nomer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Dostavka" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa_Obh" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Pokup" Relationship="Self.FK_Naklad_Prodag_Pokup" FromRole="Naklad_Prodag" ToRole="Pokup" />
+          <NavigationProperty Name="Sotrudnic" Relationship="Self.FK_Naklad_Prodag_Sotrudnic" FromRole="Naklad_Prodag" ToRole="Sotrudnic" />
+          <NavigationProperty Name="Sost_Naklad_Prodag" Relationship="Self.FK_Sost_Naklad_Prodag_Naklad_Prodag" FromRole="Naklad_Prodag" ToRole="Sost_Naklad_Prodag" />
+        </EntityType>
+        <EntityType Name="Nakladna">
+          <Key>
+            <PropertyRef Name="ID_Nakladna" />
+          </Key>
+          <Property Name="ID_Nakladna" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Postavhick" Type="Int32" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="Int32" Nullable="false" />
+          <Property Name="Data_Postavki" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Nomer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Postavhick" Relationship="Self.FK_Nakladna_Postavhick" FromRole="Nakladna" ToRole="Postavhick" />
+          <NavigationProperty Name="Sotrudnic" Relationship="Self.FK_Nakladna_Sotrudnic" FromRole="Nakladna" ToRole="Sotrudnic" />
+          <NavigationProperty Name="Sost_Nakladna" Relationship="Self.FK_Sost_Nakladna_Nakladna" FromRole="Nakladna" ToRole="Sost_Nakladna" />
+        </EntityType>
+        <EntityType Name="PodTip">
+          <Key>
+            <PropertyRef Name="ID_PodTip" />
+          </Key>
+          <Property Name="ID_PodTip" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PodTip1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Tip" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hablon" Relationship="Self.FK_Hablon_PodTip" FromRole="PodTip" ToRole="Hablon" />
+          <NavigationProperty Name="Tip" Relationship="Self.FK_PodTip_Tip" FromRole="PodTip" ToRole="Tip" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_Tovar_PodTip" FromRole="PodTip" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Pokup">
+          <Key>
+            <PropertyRef Name="ID_Pokup" />
+          </Key>
+          <Property Name="ID_Pokup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Familia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otzhestvo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Naklad_Prodag" Relationship="Self.FK_Naklad_Prodag_Pokup" FromRole="Pokup" ToRole="Naklad_Prodag" />
+          <NavigationProperty Name="J_Vibit" Relationship="Self.FK_J_Vibit_Pokup" FromRole="Pokup" ToRole="J_Vibit" />
+        </EntityType>
+        <EntityType Name="Postavhick">
+          <Key>
+            <PropertyRef Name="ID_Postavhick" />
+          </Key>
+          <Property Name="ID_Postavhick" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naimenovanie_Organiz" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Nakladna" Relationship="Self.FK_Nakladna_Postavhick" FromRole="Postavhick" ToRole="Nakladna" />
+          <NavigationProperty Name="J_Postupl" Relationship="Self.FK_J_Postupl_Postavhick" FromRole="Postavhick" ToRole="J_Postupl" />
+        </EntityType>
+        <EntityType Name="Reg">
+          <Key>
+            <PropertyRef Name="ID_Reg" />
+          </Key>
+          <Property Name="ID_Reg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Porol" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dostup" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sklad">
+          <Key>
+            <PropertyRef Name="ID_Sklad" />
+          </Key>
+          <Property Name="ID_Sklad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="Koll" Type="Int32" Nullable="false" />
+          <Property Name="Sredn_Zena" Type="Int32" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_Sklad_Tovar" FromRole="Sklad" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Sotrudnic">
+          <Key>
+            <PropertyRef Name="ID_Sotrudnic" />
+          </Key>
+          <Property Name="ID_Sotrudnic" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Familia" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imia" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otzh" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Naklad_Prodag" Relationship="Self.FK_Naklad_Prodag_Sotrudnic" FromRole="Sotrudnic" ToRole="Naklad_Prodag" />
+          <NavigationProperty Name="Nakladna" Relationship="Self.FK_Nakladna_Sotrudnic" FromRole="Sotrudnic" ToRole="Nakladna" />
+          <NavigationProperty Name="J_Postupl" Relationship="Self.FK_J_Postupl_Sotrudnic" FromRole="Sotrudnic" ToRole="J_Postupl" />
+          <NavigationProperty Name="J_Vibit" Relationship="Self.FK_J_Vibit_Sotrudnic" FromRole="Sotrudnic" ToRole="J_Vibit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tip">
+          <Key>
+            <PropertyRef Name="ID_Tip" />
+          </Key>
+          <Property Name="ID_Tip" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tip1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PodTip" Relationship="Self.FK_PodTip_Tip" FromRole="Tip" ToRole="PodTip" />
+        </EntityType>
+        <EntityType Name="Tovar">
+          <Key>
+            <PropertyRef Name="ID_Tovar" />
+          </Key>
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tovar1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_PodTip" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="PodTip" Relationship="Self.FK_Tovar_PodTip" FromRole="Tovar" ToRole="PodTip" />
+          <NavigationProperty Name="Sklad" Relationship="Self.FK_Sklad_Tovar" FromRole="Tovar" ToRole="Sklad" />
+          <NavigationProperty Name="Sost_Naklad_Prodag" Relationship="Self.FK_Sost_Naklad_Prodag_Tovar" FromRole="Tovar" ToRole="Sost_Naklad_Prodag" />
+          <NavigationProperty Name="Sost_Nakladna" Relationship="Self.FK_Sost_Nakladna_Tovar" FromRole="Tovar" ToRole="Sost_Nakladna" />
+          <NavigationProperty Name="Sostav_Partii" Relationship="Self.FK_Sostav_Partii_Tovar" FromRole="Tovar" ToRole="Sostav_Partii" />
+          <NavigationProperty Name="Sostav_Postupl_Naklad" Relationship="Self.FK_Sostav_Postupl_Naklad_Tovar" FromRole="Tovar" ToRole="Sostav_Postupl_Naklad" />
+          <NavigationProperty Name="Sostav_Vibitie_Naklad" Relationship="Self.FK_Sostav_Vibitie_Naklad_Tovar" FromRole="Tovar" ToRole="Sostav_Vibitie_Naklad" />
+        </EntityType>
+        <EntityType Name="J_Postupl">
+          <Key>
+            <PropertyRef Name="ID_Postavhick" />
+            <PropertyRef Name="ID_Nakladna" />
+            <PropertyRef Name="Data_Postavki" />
+            <PropertyRef Name="Nomer" />
+          </Key>
+          <Property Name="ID_Postavhick" Type="Int32" Nullable="false" />
+          <Property Name="ID_Nakladna" Type="Int32" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="Int32" />
+          <Property Name="Data_Postavki" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Nomer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Postavhick" Relationship="Self.FK_J_Postupl_Postavhick" FromRole="J_Postupl" ToRole="Postavhick" />
+          <NavigationProperty Name="Sotrudnic" Relationship="Self.FK_J_Postupl_Sotrudnic" FromRole="J_Postupl" ToRole="Sotrudnic" />
+        </EntityType>
+        <EntityType Name="J_Vibit">
+          <Key>
+            <PropertyRef Name="ID_Pokup" />
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Sotrudnic" />
+            <PropertyRef Name="Data_Vibitia" />
+            <PropertyRef Name="Nomer" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Dostavka" />
+            <PropertyRef Name="Summa_Obh" />
+          </Key>
+          <Property Name="ID_Pokup" Type="Int32" Nullable="false" />
+          <Property Name="ID_Naklad_Prodag" Type="Int32" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="Int32" Nullable="false" />
+          <Property Name="Data_Vibitia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Nomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Dostavka" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa_Obh" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Pokup" Relationship="Self.FK_J_Vibit_Pokup" FromRole="J_Vibit" ToRole="Pokup" />
+          <NavigationProperty Name="Sotrudnic" Relationship="Self.FK_J_Vibit_Sotrudnic" FromRole="J_Vibit" ToRole="Sotrudnic" />
+        </EntityType>
+        <EntityType Name="Sost_Naklad_Prodag">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+          </Key>
+          <Property Name="ID_Naklad_Prodag" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="Koll" Type="Int32" Nullable="false" />
+          <Property Name="Zena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Naklad_Prodag" Relationship="Self.FK_Sost_Naklad_Prodag_Naklad_Prodag" FromRole="Sost_Naklad_Prodag" ToRole="Naklad_Prodag" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_Sost_Naklad_Prodag_Tovar" FromRole="Sost_Naklad_Prodag" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Sost_Nakladna">
+          <Key>
+            <PropertyRef Name="ID_Nakladna" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+          </Key>
+          <Property Name="ID_Nakladna" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="Koll" Type="Int32" Nullable="false" />
+          <Property Name="Zena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Nakladna" Relationship="Self.FK_Sost_Nakladna_Nakladna" FromRole="Sost_Nakladna" ToRole="Nakladna" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_Sost_Nakladna_Tovar" FromRole="Sost_Nakladna" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Sostav_Partii">
+          <Key>
+            <PropertyRef Name="ID_Naklada" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+          </Key>
+          <Property Name="ID_Naklada" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="Koll" Type="Int32" Nullable="false" />
+          <Property Name="Zena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_Sostav_Partii_Tovar" FromRole="Sostav_Partii" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Sostav_Postupl_Naklad">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Postupl" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+          </Key>
+          <Property Name="ID_Naklad_Postupl" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="Koll" Type="Int32" Nullable="false" />
+          <Property Name="Zena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_Sostav_Postupl_Naklad_Tovar" FromRole="Sostav_Postupl_Naklad" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Sostav_Vibitie_Naklad">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+          </Key>
+          <Property Name="ID_Naklad_Prodag" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="Koll" Type="Int32" Nullable="false" />
+          <Property Name="Zena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_Sostav_Vibitie_Naklad_Tovar" FromRole="Sostav_Vibitie_Naklad" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="View_J_Postupl">
+          <Key>
+            <PropertyRef Name="ID_Postavhick" />
+            <PropertyRef Name="ID_Nakladna" />
+            <PropertyRef Name="Naimenovanie_Organiz" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="FIO" />
+            <PropertyRef Name="Data_Postavki" />
+            <PropertyRef Name="Nomer" />
+          </Key>
+          <Property Name="ID_Postavhick" Type="Int32" Nullable="false" />
+          <Property Name="ID_Nakladna" Type="Int32" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="Int32" />
+          <Property Name="Naimenovanie_Organiz" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="77" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data_Postavki" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Nomer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_J_Vibit">
+          <Key>
+            <PropertyRef Name="ID_Pokup" />
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Sotrudnic" />
+            <PropertyRef Name="FIO_Pokup" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="FIO_Sotrudnic" />
+            <PropertyRef Name="Data_Vibitia" />
+            <PropertyRef Name="Nomer" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Dostavka" />
+            <PropertyRef Name="Summa_Obh" />
+          </Key>
+          <Property Name="ID_Pokup" Type="Int32" Nullable="false" />
+          <Property Name="ID_Naklad_Prodag" Type="Int32" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="Int32" Nullable="false" />
+          <Property Name="FIO_Pokup" Type="String" MaxLength="62" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FIO_Sotrudnic" Type="String" MaxLength="77" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data_Vibitia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Nomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Dostavka" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa_Obh" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Naklad_Prodag">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Pokup" />
+            <PropertyRef Name="ID_Sotrudnic" />
+            <PropertyRef Name="FIO_Pokup" />
+            <PropertyRef Name="FIO_Sotrudnic" />
+            <PropertyRef Name="Data_Pokup" />
+            <PropertyRef Name="Nomer" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Dostavka" />
+            <PropertyRef Name="Summa_Obh" />
+          </Key>
+          <Property Name="ID_Naklad_Prodag" Type="Int32" Nullable="false" />
+          <Property Name="ID_Pokup" Type="Int32" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="Int32" Nullable="false" />
+          <Property Name="FIO_Pokup" Type="String" MaxLength="62" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FIO_Sotrudnic" Type="String" MaxLength="77" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data_Pokup" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Nomer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Dostavka" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa_Obh" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Nakladna">
+          <Key>
+            <PropertyRef Name="ID_Nakladna" />
+            <PropertyRef Name="ID_Postavhick" />
+            <PropertyRef Name="ID_Sotrudnic" />
+            <PropertyRef Name="Naimenovanie_Organiz" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="FIO_Sotrudnic" />
+            <PropertyRef Name="Data_Postavki" />
+            <PropertyRef Name="Nomer" />
+          </Key>
+          <Property Name="ID_Nakladna" Type="Int32" Nullable="false" />
+          <Property Name="ID_Postavhick" Type="Int32" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="Int32" Nullable="false" />
+          <Property Name="Naimenovanie_Organiz" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FIO_Sotrudnic" Type="String" MaxLength="77" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data_Postavki" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Nomer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_PodTip">
+          <Key>
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+          </Key>
+          <Property Name="ID_PodTip" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tip" Type="Int32" Nullable="false" />
+          <Property Name="Tip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PodTip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Pokup">
+          <Key>
+            <PropertyRef Name="ID_Pokup" />
+            <PropertyRef Name="FIO" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="Familia" />
+            <PropertyRef Name="Imia" />
+            <PropertyRef Name="Otzhestvo" />
+          </Key>
+          <Property Name="ID_Pokup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" MaxLength="62" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Familia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otzhestvo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Sklad">
+          <Key>
+            <PropertyRef Name="ID_Sklad" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Sredn_Zena" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Sklad" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="ID_PodTip" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tip" Type="Int32" Nullable="false" />
+          <Property Name="Tip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PodTip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Koll" Type="Int32" Nullable="false" />
+          <Property Name="Sredn_Zena" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Sost_Naklad_Prodag">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Naklad_Prodag" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="ID_PodTip" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tip" Type="Int32" Nullable="false" />
+          <Property Name="Tip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PodTip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Koll" Type="Int32" Nullable="false" />
+          <Property Name="Zena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Sost_Nakladna">
+          <Key>
+            <PropertyRef Name="ID_Nakladna" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_Postavhick" />
+            <PropertyRef Name="ID_Sotrudnic" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Naimenovanie_Organiz" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="FIO_Sotrudnic" />
+            <PropertyRef Name="Data_Postavki" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Nakladna" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="ID_Postavhick" Type="Int32" Nullable="false" />
+          <Property Name="ID_Sotrudnic" Type="Int32" Nullable="false" />
+          <Property Name="ID_PodTip" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tip" Type="Int32" Nullable="false" />
+          <Property Name="Tip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PodTip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Naimenovanie_Organiz" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FIO_Sotrudnic" Type="String" MaxLength="77" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data_Postavki" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Koll" Type="Int32" Nullable="false" />
+          <Property Name="Zena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Sostav_Partii">
+          <Key>
+            <PropertyRef Name="ID_Naklada" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Naklada" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="ID_PodTip" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tip" Type="Int32" Nullable="false" />
+          <Property Name="Tip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PodTip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Koll" Type="Int32" Nullable="false" />
+          <Property Name="Zena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Sostav_Postupl_Naklad">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Postupl" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Naklad_Postupl" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="ID_PodTip" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tip" Type="Int32" Nullable="false" />
+          <Property Name="Tip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PodTip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Koll" Type="Int32" Nullable="false" />
+          <Property Name="Zena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Sostav_Vibitie_Naklad">
+          <Key>
+            <PropertyRef Name="ID_Naklad_Prodag" />
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Koll" />
+            <PropertyRef Name="Zena" />
+            <PropertyRef Name="Summa" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Naklad_Prodag" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="ID_PodTip" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tip" Type="Int32" Nullable="false" />
+          <Property Name="Tip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PodTip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Koll" Type="Int32" Nullable="false" />
+          <Property Name="Zena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Sotrudnic">
+          <Key>
+            <PropertyRef Name="ID_Sotrudnic" />
+            <PropertyRef Name="FIO" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="Familia" />
+            <PropertyRef Name="Imia" />
+            <PropertyRef Name="Otzh" />
+          </Key>
+          <Property Name="ID_Sotrudnic" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" MaxLength="77" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Familia" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imia" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otzh" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Tovar">
+          <Key>
+            <PropertyRef Name="ID_Tovar" />
+            <PropertyRef Name="ID_PodTip" />
+            <PropertyRef Name="ID_Tip" />
+            <PropertyRef Name="Tip" />
+            <PropertyRef Name="PodTip" />
+            <PropertyRef Name="Tovar" />
+            <PropertyRef Name="Opisanie" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="ID_Tovar" Type="Int32" Nullable="false" />
+          <Property Name="ID_PodTip" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tip" Type="Int32" Nullable="false" />
+          <Property Name="Tip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PodTip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Hablon_PodTip">
+          <End Role="PodTip" Type="Self.PodTip" Multiplicity="1" />
+          <End Role="Hablon" Type="Self.Hablon" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PodTip">
+              <PropertyRef Name="ID_PodTip" />
+            </Principal>
+            <Dependent Role="Hablon">
+              <PropertyRef Name="ID_PodTip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naklad_Prodag_Pokup">
+          <End Role="Pokup" Type="Self.Pokup" Multiplicity="1" />
+          <End Role="Naklad_Prodag" Type="Self.Naklad_Prodag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokup">
+              <PropertyRef Name="ID_Pokup" />
+            </Principal>
+            <Dependent Role="Naklad_Prodag">
+              <PropertyRef Name="ID_Pokup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naklad_Prodag_Sotrudnic">
+          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="1" />
+          <End Role="Naklad_Prodag" Type="Self.Naklad_Prodag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnic">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Principal>
+            <Dependent Role="Naklad_Prodag">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sost_Naklad_Prodag_Naklad_Prodag">
+          <End Role="Naklad_Prodag" Type="Self.Naklad_Prodag" Multiplicity="1" />
+          <End Role="Sost_Naklad_Prodag" Type="Self.Sost_Naklad_Prodag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naklad_Prodag">
+              <PropertyRef Name="ID_Naklad_Prodag" />
+            </Principal>
+            <Dependent Role="Sost_Naklad_Prodag">
+              <PropertyRef Name="ID_Naklad_Prodag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nakladna_Postavhick">
+          <End Role="Postavhick" Type="Self.Postavhick" Multiplicity="1" />
+          <End Role="Nakladna" Type="Self.Nakladna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavhick">
+              <PropertyRef Name="ID_Postavhick" />
+            </Principal>
+            <Dependent Role="Nakladna">
+              <PropertyRef Name="ID_Postavhick" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nakladna_Sotrudnic">
+          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="1" />
+          <End Role="Nakladna" Type="Self.Nakladna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnic">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Principal>
+            <Dependent Role="Nakladna">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sost_Nakladna_Nakladna">
+          <End Role="Nakladna" Type="Self.Nakladna" Multiplicity="1" />
+          <End Role="Sost_Nakladna" Type="Self.Sost_Nakladna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nakladna">
+              <PropertyRef Name="ID_Nakladna" />
+            </Principal>
+            <Dependent Role="Sost_Nakladna">
+              <PropertyRef Name="ID_Nakladna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PodTip_Tip">
+          <End Role="Tip" Type="Self.Tip" Multiplicity="1" />
+          <End Role="PodTip" Type="Self.PodTip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip">
+              <PropertyRef Name="ID_Tip" />
+            </Principal>
+            <Dependent Role="PodTip">
+              <PropertyRef Name="ID_Tip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovar_PodTip">
+          <End Role="PodTip" Type="Self.PodTip" Multiplicity="1" />
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PodTip">
+              <PropertyRef Name="ID_PodTip" />
+            </Principal>
+            <Dependent Role="Tovar">
+              <PropertyRef Name="ID_PodTip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_J_Vibit_Pokup">
+          <End Role="Pokup" Type="Self.Pokup" Multiplicity="1" />
+          <End Role="J_Vibit" Type="Self.J_Vibit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokup">
+              <PropertyRef Name="ID_Pokup" />
+            </Principal>
+            <Dependent Role="J_Vibit">
+              <PropertyRef Name="ID_Pokup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_J_Postupl_Postavhick">
+          <End Role="Postavhick" Type="Self.Postavhick" Multiplicity="1" />
+          <End Role="J_Postupl" Type="Self.J_Postupl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavhick">
+              <PropertyRef Name="ID_Postavhick" />
+            </Principal>
+            <Dependent Role="J_Postupl">
+              <PropertyRef Name="ID_Postavhick" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sklad_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Sklad">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_J_Postupl_Sotrudnic">
+          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="0..1" />
+          <End Role="J_Postupl" Type="Self.J_Postupl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnic">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Principal>
+            <Dependent Role="J_Postupl">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_J_Vibit_Sotrudnic">
+          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="1" />
+          <End Role="J_Vibit" Type="Self.J_Vibit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnic">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Principal>
+            <Dependent Role="J_Vibit">
+              <PropertyRef Name="ID_Sotrudnic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sost_Naklad_Prodag_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Sost_Naklad_Prodag" Type="Self.Sost_Naklad_Prodag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Sost_Naklad_Prodag">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sost_Nakladna_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Sost_Nakladna" Type="Self.Sost_Nakladna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Sost_Nakladna">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sostav_Partii_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Sostav_Partii" Type="Self.Sostav_Partii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Sostav_Partii">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sostav_Postupl_Naklad_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Sostav_Postupl_Naklad" Type="Self.Sostav_Postupl_Naklad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Sostav_Postupl_Naklad">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sostav_Vibitie_Naklad_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Sostav_Vibitie_Naklad" Type="Self.Sostav_Vibitie_Naklad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID_Tovar" />
+            </Principal>
+            <Dependent Role="Sostav_Vibitie_Naklad">
+              <PropertyRef Name="ID_Tovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DeviseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Hablon" EntityType="Self.Hablon" />
+          <EntitySet Name="Naklad_Prodag" EntityType="Self.Naklad_Prodag" />
+          <EntitySet Name="Nakladna" EntityType="Self.Nakladna" />
+          <EntitySet Name="PodTip" EntityType="Self.PodTip" />
+          <EntitySet Name="Pokup" EntityType="Self.Pokup" />
+          <EntitySet Name="Postavhick" EntityType="Self.Postavhick" />
+          <EntitySet Name="Reg" EntityType="Self.Reg" />
+          <EntitySet Name="Sklad" EntityType="Self.Sklad" />
+          <EntitySet Name="Sotrudnic" EntityType="Self.Sotrudnic" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tip" EntityType="Self.Tip" />
+          <EntitySet Name="Tovar" EntityType="Self.Tovar" />
+          <EntitySet Name="J_Postupl" EntityType="Self.J_Postupl" />
+          <EntitySet Name="J_Vibit" EntityType="Self.J_Vibit" />
+          <EntitySet Name="Sost_Naklad_Prodag" EntityType="Self.Sost_Naklad_Prodag" />
+          <EntitySet Name="Sost_Nakladna" EntityType="Self.Sost_Nakladna" />
+          <EntitySet Name="Sostav_Partii" EntityType="Self.Sostav_Partii" />
+          <EntitySet Name="Sostav_Postupl_Naklad" EntityType="Self.Sostav_Postupl_Naklad" />
+          <EntitySet Name="Sostav_Vibitie_Naklad" EntityType="Self.Sostav_Vibitie_Naklad" />
+          <EntitySet Name="View_J_Postupl" EntityType="Self.View_J_Postupl" />
+          <EntitySet Name="View_J_Vibit" EntityType="Self.View_J_Vibit" />
+          <EntitySet Name="View_Naklad_Prodag" EntityType="Self.View_Naklad_Prodag" />
+          <EntitySet Name="View_Nakladna" EntityType="Self.View_Nakladna" />
+          <EntitySet Name="View_PodTip" EntityType="Self.View_PodTip" />
+          <EntitySet Name="View_Pokup" EntityType="Self.View_Pokup" />
+          <EntitySet Name="View_Sklad" EntityType="Self.View_Sklad" />
+          <EntitySet Name="View_Sost_Naklad_Prodag" EntityType="Self.View_Sost_Naklad_Prodag" />
+          <EntitySet Name="View_Sost_Nakladna" EntityType="Self.View_Sost_Nakladna" />
+          <EntitySet Name="View_Sostav_Partii" EntityType="Self.View_Sostav_Partii" />
+          <EntitySet Name="View_Sostav_Postupl_Naklad" EntityType="Self.View_Sostav_Postupl_Naklad" />
+          <EntitySet Name="View_Sostav_Vibitie_Naklad" EntityType="Self.View_Sostav_Vibitie_Naklad" />
+          <EntitySet Name="View_Sotrudnic" EntityType="Self.View_Sotrudnic" />
+          <EntitySet Name="View_Tovar" EntityType="Self.View_Tovar" />
+          <AssociationSet Name="FK_Hablon_PodTip" Association="Self.FK_Hablon_PodTip">
+            <End Role="PodTip" EntitySet="PodTip" />
+            <End Role="Hablon" EntitySet="Hablon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naklad_Prodag_Pokup" Association="Self.FK_Naklad_Prodag_Pokup">
+            <End Role="Pokup" EntitySet="Pokup" />
+            <End Role="Naklad_Prodag" EntitySet="Naklad_Prodag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naklad_Prodag_Sotrudnic" Association="Self.FK_Naklad_Prodag_Sotrudnic">
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+            <End Role="Naklad_Prodag" EntitySet="Naklad_Prodag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sost_Naklad_Prodag_Naklad_Prodag" Association="Self.FK_Sost_Naklad_Prodag_Naklad_Prodag">
+            <End Role="Naklad_Prodag" EntitySet="Naklad_Prodag" />
+            <End Role="Sost_Naklad_Prodag" EntitySet="Sost_Naklad_Prodag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nakladna_Postavhick" Association="Self.FK_Nakladna_Postavhick">
+            <End Role="Postavhick" EntitySet="Postavhick" />
+            <End Role="Nakladna" EntitySet="Nakladna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nakladna_Sotrudnic" Association="Self.FK_Nakladna_Sotrudnic">
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+            <End Role="Nakladna" EntitySet="Nakladna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sost_Nakladna_Nakladna" Association="Self.FK_Sost_Nakladna_Nakladna">
+            <End Role="Nakladna" EntitySet="Nakladna" />
+            <End Role="Sost_Nakladna" EntitySet="Sost_Nakladna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PodTip_Tip" Association="Self.FK_PodTip_Tip">
+            <End Role="Tip" EntitySet="Tip" />
+            <End Role="PodTip" EntitySet="PodTip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovar_PodTip" Association="Self.FK_Tovar_PodTip">
+            <End Role="PodTip" EntitySet="PodTip" />
+            <End Role="Tovar" EntitySet="Tovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_J_Vibit_Pokup" Association="Self.FK_J_Vibit_Pokup">
+            <End Role="Pokup" EntitySet="Pokup" />
+            <End Role="J_Vibit" EntitySet="J_Vibit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_J_Postupl_Postavhick" Association="Self.FK_J_Postupl_Postavhick">
+            <End Role="Postavhick" EntitySet="Postavhick" />
+            <End Role="J_Postupl" EntitySet="J_Postupl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sklad_Tovar" Association="Self.FK_Sklad_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sklad" EntitySet="Sklad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_J_Postupl_Sotrudnic" Association="Self.FK_J_Postupl_Sotrudnic">
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+            <End Role="J_Postupl" EntitySet="J_Postupl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_J_Vibit_Sotrudnic" Association="Self.FK_J_Vibit_Sotrudnic">
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+            <End Role="J_Vibit" EntitySet="J_Vibit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sost_Naklad_Prodag_Tovar" Association="Self.FK_Sost_Naklad_Prodag_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sost_Naklad_Prodag" EntitySet="Sost_Naklad_Prodag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sost_Nakladna_Tovar" Association="Self.FK_Sost_Nakladna_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sost_Nakladna" EntitySet="Sost_Nakladna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sostav_Partii_Tovar" Association="Self.FK_Sostav_Partii_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sostav_Partii" EntitySet="Sostav_Partii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sostav_Postupl_Naklad_Tovar" Association="Self.FK_Sostav_Postupl_Naklad_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sostav_Postupl_Naklad" EntitySet="Sostav_Postupl_Naklad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sostav_Vibitie_Naklad_Tovar" Association="Self.FK_Sostav_Vibitie_Naklad_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Sostav_Vibitie_Naklad" EntitySet="Sostav_Vibitie_Naklad" />
+          </AssociationSet>
+          <FunctionImport Name="Hranim_PodTip" ReturnType="Collection(DeviseModel.Hranim_PodTip_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Hranim_Sost_J_Vibit" ReturnType="Collection(DeviseModel.Hranim_Sost_J_Vibit_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Hranim_Sost_Naklad_Prodag" ReturnType="Collection(DeviseModel.Hranim_Sost_Naklad_Prodag_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Hranim_Sostav_Patii_Sklad" ReturnType="Collection(DeviseModel.Hranim_Sostav_Patii_Sklad_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Hranim_View_Sost_Nakladna" ReturnType="Collection(DeviseModel.Hranim_View_Sost_Nakladna_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DeviseModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DeviseModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="View_Sostav_Postupl_Nakla" ReturnType="Collection(DeviseModel.View_Sostav_Postupl_Nakla_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Hranim_PodTip_Result">
+          <Property Type="Int32" Name="ID_PodTip" Nullable="false" />
+          <Property Type="Int32" Name="ID_Tip" Nullable="false" />
+          <Property Type="String" Name="Tip" Nullable="false" />
+          <Property Type="String" Name="PodTip" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Hranim_Sost_J_Vibit_Result">
+          <Property Type="Int32" Name="ID_Naklad_Prodag" Nullable="false" />
+          <Property Type="Int32" Name="ID_Tovar" Nullable="false" />
+          <Property Type="Int32" Name="ID_PodTip" Nullable="false" />
+          <Property Type="Int32" Name="ID_Tip" Nullable="false" />
+          <Property Type="String" Name="Tip" Nullable="false" />
+          <Property Type="String" Name="PodTip" Nullable="false" />
+          <Property Type="String" Name="Tovar" Nullable="false" />
+          <Property Type="String" Name="Opisanie" Nullable="false" />
+          <Property Type="Int32" Name="Koll" Nullable="false" />
+          <Property Type="Decimal" Name="Zena" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Summa" Nullable="false" Precision="19" />
+          <Property Type="Binary" Name="Image" Nullable="false" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="Hranim_Sost_Naklad_Prodag_Result">
+          <Property Type="Int32" Name="ID_Naklad_Prodag" Nullable="false" />
+          <Property Type="Int32" Name="ID_Tovar" Nullable="false" />
+          <Property Type="Int32" Name="ID_PodTip" Nullable="false" />
+          <Property Type="Int32" Name="ID_Tip" Nullable="false" />
+          <Property Type="String" Name="Tip" Nullable="false" />
+          <Property Type="String" Name="PodTip" Nullable="false" />
+          <Property Type="String" Name="Tovar" Nullable="false" />
+          <Property Type="String" Name="Opisanie" Nullable="false" />
+          <Property Type="Int32" Name="Koll" Nullable="false" />
+          <Property Type="Decimal" Name="Zena" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Summa" Nullable="false" Precision="19" />
+          <Property Type="Binary" Name="Image" Nullable="false" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="Hranim_Sostav_Patii_Sklad_Result">
+          <Property Type="Int32" Name="ID_Naklada" Nullable="false" />
+          <Property Type="Int32" Name="ID_Tovar" Nullable="false" />
+          <Property Type="Int32" Name="ID_PodTip" Nullable="false" />
+          <Property Type="Int32" Name="ID_Tip" Nullable="false" />
+          <Property Type="String" Name="Tip" Nullable="false" />
+          <Property Type="String" Name="PodTip" Nullable="false" />
+          <Property Type="String" Name="Tovar" Nullable="false" />
+          <Property Type="String" Name="Opisanie" Nullable="false" />
+          <Property Type="Int32" Name="Koll" Nullable="false" />
+          <Property Type="Decimal" Name="Zena" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Summa" Nullable="false" Precision="19" />
+          <Property Type="Binary" Name="Image" Nullable="false" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="Hranim_View_Sost_Nakladna_Result">
+          <Property Type="Int32" Name="ID_Nakladna" Nullable="false" />
+          <Property Type="Int32" Name="ID_Tovar" Nullable="false" />
+          <Property Type="Int32" Name="ID_Postavhick" Nullable="false" />
+          <Property Type="Int32" Name="ID_Sotrudnic" Nullable="false" />
+          <Property Type="Int32" Name="ID_PodTip" Nullable="false" />
+          <Property Type="Int32" Name="ID_Tip" Nullable="false" />
+          <Property Type="String" Name="Tip" Nullable="false" />
+          <Property Type="String" Name="PodTip" Nullable="false" />
+          <Property Type="String" Name="Tovar" Nullable="false" />
+          <Property Type="String" Name="Opisanie" Nullable="false" />
+          <Property Type="String" Name="Naimenovanie_Organiz" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="FIO_Sotrudnic" Nullable="false" MaxLength="77" />
+          <Property Type="DateTime" Name="Data_Postavki" Nullable="false" />
+          <Property Type="Int32" Name="Koll" Nullable="false" />
+          <Property Type="Decimal" Name="Zena" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Summa" Nullable="false" Precision="19" />
+          <Property Type="Binary" Name="Image" Nullable="false" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="View_Sostav_Postupl_Nakla_Result">
+          <Property Type="Int32" Name="ID_Naklad_Postupl" Nullable="false" />
+          <Property Type="Int32" Name="ID_Tovar" Nullable="false" />
+          <Property Type="Int32" Name="ID_PodTip" Nullable="false" />
+          <Property Type="Int32" Name="ID_Tip" Nullable="false" />
+          <Property Type="String" Name="Tip" Nullable="false" />
+          <Property Type="String" Name="PodTip" Nullable="false" />
+          <Property Type="String" Name="Tovar" Nullable="false" />
+          <Property Type="String" Name="Opisanie" Nullable="false" />
+          <Property Type="Int32" Name="Koll" Nullable="false" />
+          <Property Type="Decimal" Name="Zena" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Summa" Nullable="false" Precision="19" />
+          <Property Type="Binary" Name="Image" Nullable="false" MaxLength="Max" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DeviseModelContainer" CdmEntityContainer="DeviseEntities">
+          <EntitySetMapping Name="Hablon">
+            <EntityTypeMapping TypeName="DeviseModel.Hablon">
+              <MappingFragment StoreEntitySet="Hablon">
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="Hablon1" ColumnName="Hablon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Naklad_Prodag">
+            <EntityTypeMapping TypeName="DeviseModel.Naklad_Prodag">
+              <MappingFragment StoreEntitySet="Naklad_Prodag">
+                <ScalarProperty Name="ID_Naklad_Prodag" ColumnName="ID_Naklad_Prodag" />
+                <ScalarProperty Name="ID_Pokup" ColumnName="ID_Pokup" />
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
+                <ScalarProperty Name="Data_Pokup" ColumnName="Data_Pokup" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Dostavka" ColumnName="Dostavka" />
+                <ScalarProperty Name="Summa_Obh" ColumnName="Summa_Obh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nakladna">
+            <EntityTypeMapping TypeName="DeviseModel.Nakladna">
+              <MappingFragment StoreEntitySet="Nakladna">
+                <ScalarProperty Name="ID_Nakladna" ColumnName="ID_Nakladna" />
+                <ScalarProperty Name="ID_Postavhick" ColumnName="ID_Postavhick" />
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
+                <ScalarProperty Name="Data_Postavki" ColumnName="Data_Postavki" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PodTip">
+            <EntityTypeMapping TypeName="DeviseModel.PodTip">
+              <MappingFragment StoreEntitySet="PodTip">
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="PodTip1" ColumnName="PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pokup">
+            <EntityTypeMapping TypeName="DeviseModel.Pokup">
+              <MappingFragment StoreEntitySet="Pokup">
+                <ScalarProperty Name="ID_Pokup" ColumnName="ID_Pokup" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Imia" ColumnName="Imia" />
+                <ScalarProperty Name="Otzhestvo" ColumnName="Otzhestvo" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postavhick">
+            <EntityTypeMapping TypeName="DeviseModel.Postavhick">
+              <MappingFragment StoreEntitySet="Postavhick">
+                <ScalarProperty Name="ID_Postavhick" ColumnName="ID_Postavhick" />
+                <ScalarProperty Name="Naimenovanie_Organiz" ColumnName="Naimenovanie_Organiz" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reg">
+            <EntityTypeMapping TypeName="DeviseModel.Reg">
+              <MappingFragment StoreEntitySet="Reg">
+                <ScalarProperty Name="ID_Reg" ColumnName="ID_Reg" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Porol" ColumnName="Porol" />
+                <ScalarProperty Name="Dostup" ColumnName="Dostup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sklad">
+            <EntityTypeMapping TypeName="DeviseModel.Sklad">
+              <MappingFragment StoreEntitySet="Sklad">
+                <ScalarProperty Name="ID_Sklad" ColumnName="ID_Sklad" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Sredn_Zena" ColumnName="Sredn_Zena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrudnic">
+            <EntityTypeMapping TypeName="DeviseModel.Sotrudnic">
+              <MappingFragment StoreEntitySet="Sotrudnic">
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Imia" ColumnName="Imia" />
+                <ScalarProperty Name="Otzh" ColumnName="Otzh" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DeviseModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tip">
+            <EntityTypeMapping TypeName="DeviseModel.Tip">
+              <MappingFragment StoreEntitySet="Tip">
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip1" ColumnName="Tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tovar">
+            <EntityTypeMapping TypeName="DeviseModel.Tovar">
+              <MappingFragment StoreEntitySet="Tovar">
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="Tovar1" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="J_Postupl">
+            <EntityTypeMapping TypeName="DeviseModel.J_Postupl">
+              <MappingFragment StoreEntitySet="J_Postupl">
+                <ScalarProperty Name="ID_Postavhick" ColumnName="ID_Postavhick" />
+                <ScalarProperty Name="ID_Nakladna" ColumnName="ID_Nakladna" />
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
+                <ScalarProperty Name="Data_Postavki" ColumnName="Data_Postavki" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="J_Vibit">
+            <EntityTypeMapping TypeName="DeviseModel.J_Vibit">
+              <MappingFragment StoreEntitySet="J_Vibit">
+                <ScalarProperty Name="ID_Pokup" ColumnName="ID_Pokup" />
+                <ScalarProperty Name="ID_Naklad_Prodag" ColumnName="ID_Naklad_Prodag" />
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
+                <ScalarProperty Name="Data_Vibitia" ColumnName="Data_Vibitia" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Dostavka" ColumnName="Dostavka" />
+                <ScalarProperty Name="Summa_Obh" ColumnName="Summa_Obh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sost_Naklad_Prodag">
+            <EntityTypeMapping TypeName="DeviseModel.Sost_Naklad_Prodag">
+              <MappingFragment StoreEntitySet="Sost_Naklad_Prodag">
+                <ScalarProperty Name="ID_Naklad_Prodag" ColumnName="ID_Naklad_Prodag" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sost_Nakladna">
+            <EntityTypeMapping TypeName="DeviseModel.Sost_Nakladna">
+              <MappingFragment StoreEntitySet="Sost_Nakladna">
+                <ScalarProperty Name="ID_Nakladna" ColumnName="ID_Nakladna" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sostav_Partii">
+            <EntityTypeMapping TypeName="DeviseModel.Sostav_Partii">
+              <MappingFragment StoreEntitySet="Sostav_Partii">
+                <ScalarProperty Name="ID_Naklada" ColumnName="ID_Naklada" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sostav_Postupl_Naklad">
+            <EntityTypeMapping TypeName="DeviseModel.Sostav_Postupl_Naklad">
+              <MappingFragment StoreEntitySet="Sostav_Postupl_Naklad">
+                <ScalarProperty Name="ID_Naklad_Postupl" ColumnName="ID_Naklad_Postupl" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sostav_Vibitie_Naklad">
+            <EntityTypeMapping TypeName="DeviseModel.Sostav_Vibitie_Naklad">
+              <MappingFragment StoreEntitySet="Sostav_Vibitie_Naklad">
+                <ScalarProperty Name="ID_Naklad_Prodag" ColumnName="ID_Naklad_Prodag" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_J_Postupl">
+            <EntityTypeMapping TypeName="DeviseModel.View_J_Postupl">
+              <MappingFragment StoreEntitySet="View_J_Postupl">
+                <ScalarProperty Name="ID_Postavhick" ColumnName="ID_Postavhick" />
+                <ScalarProperty Name="ID_Nakladna" ColumnName="ID_Nakladna" />
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
+                <ScalarProperty Name="Naimenovanie_Organiz" ColumnName="Naimenovanie_Organiz" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Data_Postavki" ColumnName="Data_Postavki" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_J_Vibit">
+            <EntityTypeMapping TypeName="DeviseModel.View_J_Vibit">
+              <MappingFragment StoreEntitySet="View_J_Vibit">
+                <ScalarProperty Name="ID_Pokup" ColumnName="ID_Pokup" />
+                <ScalarProperty Name="ID_Naklad_Prodag" ColumnName="ID_Naklad_Prodag" />
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
+                <ScalarProperty Name="FIO_Pokup" ColumnName="FIO_Pokup" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="FIO_Sotrudnic" ColumnName="FIO_Sotrudnic" />
+                <ScalarProperty Name="Data_Vibitia" ColumnName="Data_Vibitia" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Dostavka" ColumnName="Dostavka" />
+                <ScalarProperty Name="Summa_Obh" ColumnName="Summa_Obh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Naklad_Prodag">
+            <EntityTypeMapping TypeName="DeviseModel.View_Naklad_Prodag">
+              <MappingFragment StoreEntitySet="View_Naklad_Prodag">
+                <ScalarProperty Name="ID_Naklad_Prodag" ColumnName="ID_Naklad_Prodag" />
+                <ScalarProperty Name="ID_Pokup" ColumnName="ID_Pokup" />
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
+                <ScalarProperty Name="FIO_Pokup" ColumnName="FIO_Pokup" />
+                <ScalarProperty Name="FIO_Sotrudnic" ColumnName="FIO_Sotrudnic" />
+                <ScalarProperty Name="Data_Pokup" ColumnName="Data_Pokup" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Dostavka" ColumnName="Dostavka" />
+                <ScalarProperty Name="Summa_Obh" ColumnName="Summa_Obh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Nakladna">
+            <EntityTypeMapping TypeName="DeviseModel.View_Nakladna">
+              <MappingFragment StoreEntitySet="View_Nakladna">
+                <ScalarProperty Name="ID_Nakladna" ColumnName="ID_Nakladna" />
+                <ScalarProperty Name="ID_Postavhick" ColumnName="ID_Postavhick" />
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
+                <ScalarProperty Name="Naimenovanie_Organiz" ColumnName="Naimenovanie_Organiz" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="FIO_Sotrudnic" ColumnName="FIO_Sotrudnic" />
+                <ScalarProperty Name="Data_Postavki" ColumnName="Data_Postavki" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_PodTip">
+            <EntityTypeMapping TypeName="DeviseModel.View_PodTip">
+              <MappingFragment StoreEntitySet="View_PodTip">
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Pokup">
+            <EntityTypeMapping TypeName="DeviseModel.View_Pokup">
+              <MappingFragment StoreEntitySet="View_Pokup">
+                <ScalarProperty Name="ID_Pokup" ColumnName="ID_Pokup" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Imia" ColumnName="Imia" />
+                <ScalarProperty Name="Otzhestvo" ColumnName="Otzhestvo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Sklad">
+            <EntityTypeMapping TypeName="DeviseModel.View_Sklad">
+              <MappingFragment StoreEntitySet="View_Sklad">
+                <ScalarProperty Name="ID_Sklad" ColumnName="ID_Sklad" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Sredn_Zena" ColumnName="Sredn_Zena" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Sost_Naklad_Prodag">
+            <EntityTypeMapping TypeName="DeviseModel.View_Sost_Naklad_Prodag">
+              <MappingFragment StoreEntitySet="View_Sost_Naklad_Prodag">
+                <ScalarProperty Name="ID_Naklad_Prodag" ColumnName="ID_Naklad_Prodag" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Sost_Nakladna">
+            <EntityTypeMapping TypeName="DeviseModel.View_Sost_Nakladna">
+              <MappingFragment StoreEntitySet="View_Sost_Nakladna">
+                <ScalarProperty Name="ID_Nakladna" ColumnName="ID_Nakladna" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="ID_Postavhick" ColumnName="ID_Postavhick" />
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Naimenovanie_Organiz" ColumnName="Naimenovanie_Organiz" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="FIO_Sotrudnic" ColumnName="FIO_Sotrudnic" />
+                <ScalarProperty Name="Data_Postavki" ColumnName="Data_Postavki" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Sostav_Partii">
+            <EntityTypeMapping TypeName="DeviseModel.View_Sostav_Partii">
+              <MappingFragment StoreEntitySet="View_Sostav_Partii">
+                <ScalarProperty Name="ID_Naklada" ColumnName="ID_Naklada" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Sostav_Postupl_Naklad">
+            <EntityTypeMapping TypeName="DeviseModel.View_Sostav_Postupl_Naklad">
+              <MappingFragment StoreEntitySet="View_Sostav_Postupl_Naklad">
+                <ScalarProperty Name="ID_Naklad_Postupl" ColumnName="ID_Naklad_Postupl" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Sostav_Vibitie_Naklad">
+            <EntityTypeMapping TypeName="DeviseModel.View_Sostav_Vibitie_Naklad">
+              <MappingFragment StoreEntitySet="View_Sostav_Vibitie_Naklad">
+                <ScalarProperty Name="ID_Naklad_Prodag" ColumnName="ID_Naklad_Prodag" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Sotrudnic">
+            <EntityTypeMapping TypeName="DeviseModel.View_Sotrudnic">
+              <MappingFragment StoreEntitySet="View_Sotrudnic">
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Imia" ColumnName="Imia" />
+                <ScalarProperty Name="Otzh" ColumnName="Otzh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Tovar">
+            <EntityTypeMapping TypeName="DeviseModel.View_Tovar">
+              <MappingFragment StoreEntitySet="View_Tovar">
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Hranim_PodTip" FunctionName="Хранилище DeviseModel.Hranim_PodTip">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DeviseModel.Hranim_PodTip_Result">
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Hranim_Sost_J_Vibit" FunctionName="Хранилище DeviseModel.Hranim_Sost_J_Vibit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DeviseModel.Hranim_Sost_J_Vibit_Result">
+                <ScalarProperty Name="ID_Naklad_Prodag" ColumnName="ID_Naklad_Prodag" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Hranim_Sost_Naklad_Prodag" FunctionName="Хранилище DeviseModel.Hranim_Sost_Naklad_Prodag">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DeviseModel.Hranim_Sost_Naklad_Prodag_Result">
+                <ScalarProperty Name="ID_Naklad_Prodag" ColumnName="ID_Naklad_Prodag" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Hranim_Sostav_Patii_Sklad" FunctionName="Хранилище DeviseModel.Hranim_Sostav_Patii_Sklad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DeviseModel.Hranim_Sostav_Patii_Sklad_Result">
+                <ScalarProperty Name="ID_Naklada" ColumnName="ID_Naklada" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Hranim_View_Sost_Nakladna" FunctionName="Хранилище DeviseModel.Hranim_View_Sost_Nakladna">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DeviseModel.Hranim_View_Sost_Nakladna_Result">
+                <ScalarProperty Name="ID_Nakladna" ColumnName="ID_Nakladna" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="ID_Postavhick" ColumnName="ID_Postavhick" />
+                <ScalarProperty Name="ID_Sotrudnic" ColumnName="ID_Sotrudnic" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Naimenovanie_Organiz" ColumnName="Naimenovanie_Organiz" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="FIO_Sotrudnic" ColumnName="FIO_Sotrudnic" />
+                <ScalarProperty Name="Data_Postavki" ColumnName="Data_Postavki" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище DeviseModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище DeviseModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище DeviseModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище DeviseModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DeviseModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище DeviseModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DeviseModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище DeviseModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище DeviseModel.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="View_Sostav_Postupl_Nakla" FunctionName="Хранилище DeviseModel.View_Sostav_Postupl_Nakla">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DeviseModel.View_Sostav_Postupl_Nakla_Result">
+                <ScalarProperty Name="ID_Naklad_Postupl" ColumnName="ID_Naklad_Postupl" />
+                <ScalarProperty Name="ID_Tovar" ColumnName="ID_Tovar" />
+                <ScalarProperty Name="ID_PodTip" ColumnName="ID_PodTip" />
+                <ScalarProperty Name="ID_Tip" ColumnName="ID_Tip" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="PodTip" ColumnName="PodTip" />
+                <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Koll" ColumnName="Koll" />
+                <ScalarProperty Name="Zena" ColumnName="Zena" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="39a12ab9df81499f9c3cb151f876e02c" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="DeviseModel1.Hablon" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.InternetUser" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Naklad_Prodag" Width="1.5" PointX="5.25" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Nakladna" Width="1.5" PointX="8.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.PodTip" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Pokup" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Postavhick" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Reg" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Sklad" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Sotrudnic" Width="1.5" PointX="3" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Tip" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Tovar" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.J_Postupl" Width="1.5" PointX="10.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.J_Vibit" Width="1.5" PointX="5.25" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Sost_Naklad_Prodag" Width="2.25" PointX="7.375" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Sost_Nakladna" Width="1.5" PointX="10.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Sostav_Partii" Width="1.5" PointX="7.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Sostav_Postupl_Naklad" Width="1.5" PointX="7.5" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.Sostav_Vibitie_Naklad" Width="1.5" PointX="7.5" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_J_Postupl" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_J_Vibit" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_Naklad_Prodag" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_Nakladna" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_PodTip" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_Pokup" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_Sklad" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_Sost_Naklad_Prodag" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_Sost_Nakladna" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_Sostav_Partii" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_Sostav_Postupl_Naklad" Width="1.5" PointX="14.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_Sostav_Vibitie_Naklad" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_Sotrudnic" Width="1.5" PointX="16.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeviseModel1.View_Tovar" Width="1.5" PointX="16.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="DeviseModel1.FK_Hablon_PodTip" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Naklad_Prodag_InternetUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Naklad_Prodag_Pokup" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Naklad_Prodag_Sotrudnic" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Sost_Naklad_Prodag_Naklad_Prodag" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Nakladna_Postavhick" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Nakladna_Sotrudnic" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Sost_Nakladna_Nakladna" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_PodTip_Tip" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Tovar_PodTip" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_J_Vibit_Pokup" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_J_Postupl_Postavhick" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Sklad_Tovar" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_J_Postupl_Sotrudnic" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_J_Vibit_Sotrudnic" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Sost_Naklad_Prodag_Tovar" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Sost_Nakladna_Tovar" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Sostav_Partii_Tovar" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Sostav_Postupl_Naklad_Tovar" ManuallyRouted="false" />
+        <AssociationConnector Association="DeviseModel1.FK_Sostav_Vibitie_Naklad_Tovar" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
