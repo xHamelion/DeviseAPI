@@ -532,7 +532,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51023</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://DESKTOP-J96IBMI:51023/</IISUrl>
+          <IISUrl>http://192.168.0.7:51023/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://192.168.0.7:51023/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
